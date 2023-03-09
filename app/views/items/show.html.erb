@@ -1,6 +1,9 @@
 <div>
   <h1><%= @item.title %></h1>
   <p><%= @item.description %></p>
+  <p>
+    <%= main_image(@item) %>
+  </p>
   <p><%= link_to "Edit item", edit_item_path %></p>
 </div>
 
