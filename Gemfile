@@ -68,6 +68,11 @@ group :development do
   # gem "spring"
 end
 
+group :production do
+  # Use PostgreSQL as the database for Active Record in production
+  gem "pg"
+end
+
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
