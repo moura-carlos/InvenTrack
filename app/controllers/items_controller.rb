@@ -11,9 +11,9 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to items_path, notice: 'Item successfully created'
+      redirect_to @item, status: :see_other, notice: 'Item successfully created!'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -23,17 +23,17 @@ class ItemsController < ApplicationController
 
   def update
     if @item.update(item_params)
-      redirect_to @item, notice: 'Item successfully updated'
+      redirect_to @item, status: :see_other, notice: 'Item successfully updated'
     else
-      render :edit, notice: 'Item not updated'
+      render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     if @item.destroy
-      redirect_to items_path, notice: 'Item successfully deleted'
+      redirect_to items_url, status: :see_other, notice: 'Item successfully deleted!'
     else
-      redirect_to items_path, notice: 'Item not deleted'
+      render :show, notice: 'Something went wrong! Please, try again.'
     end
   end
 

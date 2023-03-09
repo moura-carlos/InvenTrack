@@ -1,0 +1,7 @@
+<%= render "shared/errors", object: @item %>
+
+<%= simple_form_for(@item) do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.submit %>
+<% end %>
