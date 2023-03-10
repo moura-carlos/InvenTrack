@@ -18,11 +18,12 @@
     <%= render "layouts/header" %>
 
     <main>
-      <div>
+      <!--<div>
         <% if flash[:notice] %>
           <p class="notice"><%= flash[:notice] %></p>
         <% end %>
-      </div>
+      </div>-->
+      <%= render "layouts/flash" %>
       <%= yield %>
     <main>
 
