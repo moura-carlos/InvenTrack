@@ -1,2 +1,6 @@
 Name: <%= @user.name %>
 Email: <%= @user.email %>
+<%= link_to "Edit my account", edit_user_path(@user) %>
+<%= link_to 'Delete account',
+  @user, data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to delete your account?' },
+  class: 'btn btn-danger' %>

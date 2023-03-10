@@ -5,5 +5,9 @@
   <%= f.input :email, required: true %>
   <%= f.input :password, required: true %>
   <%= f.input :password_confirmation, label: "Confirm Password", required: true %>
-  <%= f.submit class: 'btn btn-primary' %>
+  <% if @user.new_record? %>
+    <%= f.submit "Create Account", class: 'btn btn-primary' %>
+  <% else %>
+   <%= f.submit "Update Account", class: 'btn btn-primary' %>
+  <% end %>
 <% end %>
