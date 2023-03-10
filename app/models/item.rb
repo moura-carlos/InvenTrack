@@ -1,6 +1,9 @@
 class Item < ApplicationRecord
   validates :title, presence: true
   validates :description, presence: true, length: { minimum: 20 }
+  validates :quantity, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }
+
   validate :acceptable_image
 
   has_one_attached :main_image
