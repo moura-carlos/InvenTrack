@@ -1,0 +1,9 @@
+<%= render "shared/errors", object: @user %>
+
+<%= simple_form_for @user do |f| %>
+<%= f.input :name, required: true %>
+  <%= f.input :email, required: true %>
+  <%= f.input :password, required: true %>
+  <%= f.input :password_confirmation, label: "Confirm Password", required: true %>
+  <%= f.submit class: 'btn btn-primary' %>
+<% end %>
