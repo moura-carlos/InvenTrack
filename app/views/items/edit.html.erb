@@ -1,11 +1,5 @@
 <%= render "shared/errors", object: @item %>
 
-<%= simple_form_for(@item) do |f| %>
-  <%= f.input :title %>
-  <%= f.input :description %>
-  <%= f.input :main_image, as: :file %>
-
-  <%= f.submit %>
-<% end %>
+<%= render "items/form", item: @item %>
 
 <%= link_to "Go back", @item %>
