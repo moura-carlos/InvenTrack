@@ -9,4 +9,6 @@ Rails.application.routes.draw do
 
   get "signup", to: "users#new"
   # get "users/signup", to: "users#new"
+  resource :session, only: [:new, :create, :destroy]
+  root "items#index"
 end
