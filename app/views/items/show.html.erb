@@ -1,10 +1,17 @@
-<div>
-  <h1><%= @item.title %></h1>
-  <p><%= @item.description %></p>
-  <p>
-    <%= main_image(@item) %>
-  </p>
-  <p><%= link_to "Edit item", edit_item_path %></p>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6">
+      <%= main_image(@item) %>
+    </div>
+    <div class="col-md-6">
+      <h1 class="mb-3"><%= @item.title %></h1>
+      <p class="lead"><%= @item.description %></p>
+      <p><%= link_to "Edit item", edit_item_path, class: "btn btn-primary mt-3" %></p>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-md-12">
+      <%= link_to "All Items", items_path, class: "btn btn-secondary" %>
+    </div>
+  </div>
 </div>
-
-<%= link_to "All Items", items_path %>
