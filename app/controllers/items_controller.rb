@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
   before_action :find_item, only: [:show, :edit, :update, :destroy]
+  after_action :send_email, only: [:create, :update]
+
   def index
     @items = Item.all
   end
@@ -45,5 +47,9 @@ class ItemsController < ApplicationController
 
   def find_item
     @item = Item.find(params[:id])
+  end
+
+  def send_email
+    ItemMailer.stock(@item, current_user).deliver_now
   end
 end
