@@ -8,6 +8,8 @@ class Item < ApplicationRecord
 
   has_one_attached :main_image
 
+  belongs_to :user
+
   private
 
   def acceptable_image

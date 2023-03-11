@@ -1,8 +1,18 @@
-Name: <%= @user.name %>
-Email: <%= @user.email %>
-<% if current_user?(@user) %>
-  <%= link_to "Edit my account", edit_user_path(@user) %>
-  <%= link_to 'Delete account',
-    @user, data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to delete your account?' },
-    class: 'btn btn-danger' %>
-<% end %>
+<div class="container">
+  <div class="mb-3">
+    <%= label_tag "name", "Name:" %>
+    <%= text_field_tag "name", @user.name, class: "form-control", disabled: true %>
+  </div>
+  <div class="mb-3">
+    <%= label_tag "email", "Email:" %>
+    <%= text_field_tag "email", @user.email, class: "form-control", disabled: true %>
+  </div>
+  <% if current_user?(@user) %>
+    <div class="d-flex justify-content-between">
+      <%= link_to "Edit my account", edit_user_path(@user), class: "btn btn-primary" %>
+      <%= link_to 'Delete account',
+          @user, data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to delete your account?' },
+          class: 'btn btn-danger' %>
+    </div>
+  <% end %>
+</div>

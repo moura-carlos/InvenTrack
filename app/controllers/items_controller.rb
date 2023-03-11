@@ -1,17 +1,22 @@
 class ItemsController < ApplicationController
+  before_action :require_signin
+
   before_action :find_item, only: [:show, :edit, :update, :destroy]
   after_action :send_email, only: [:create, :update]
 
   def index
-    @items = Item.all
+    @user = current_user
+    @items = @user.items
   end
 
   def new
-    @item = Item.new
+    @user = current_user
+    @item = @user.items.new
   end
 
   def create
-    @item = Item.new(item_params)
+    @user = current_user
+    @item = @user.items.new(item_params)
     if @item.save
       redirect_to @item, status: :see_other, notice: 'Item successfully created!'
     else
@@ -46,7 +51,8 @@ class ItemsController < ApplicationController
   end
 
   def find_item
-    @item = Item.find(params[:id])
+    @user = current_user
+    @item = @user.items.find(params[:id])
   end
 
   def send_email
