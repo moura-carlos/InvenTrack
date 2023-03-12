@@ -7,6 +7,8 @@ class Item < ApplicationRecord
   validate :acceptable_image
 
   has_one_attached :main_image
+  has_many :item_categories, dependent: :destroy
+  has_many :categories, through: :item_categories
 
   belongs_to :user
 
