@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   resources :users
 
+  resources :categories
+
   get "signup", to: "users#new"
   # get "users/signup", to: "users#new"
   resource :session, only: [:new, :create, :destroy]

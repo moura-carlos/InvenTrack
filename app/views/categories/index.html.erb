@@ -1,0 +1,19 @@
+<div class="container">
+  <h1>Categories</h1>
+  <div class="row">
+    <% @categories.each do |category| %>
+      <div class="col-md-4">
+        <%= link_to category, style: "color:inherit;text-decoration:none;" do %>
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title"><%= category.name %></h5>
+            <%= link_to "Edit", edit_category_path(category), class: "btn btn-primary me-2" %>
+            <%= link_to "Delete", category_path(category), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <%= link_to "New Category", new_category_path, class: "btn btn-success" %>
+</div>
