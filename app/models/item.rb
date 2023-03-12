@@ -12,6 +12,10 @@ class Item < ApplicationRecord
 
   belongs_to :user
 
+  def total_value
+    quantity * price
+  end
+
   private
 
   def acceptable_image
@@ -27,4 +31,5 @@ class Item < ApplicationRecord
     end
 
   end
+
 end
