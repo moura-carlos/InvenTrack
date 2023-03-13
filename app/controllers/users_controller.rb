@@ -14,7 +14,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      session[:user_id] = @user.id
+      # if there is already a session[:user_id] it means the user creating this account is admin and whe dont want to log them out
+      session[:user_id] = @user.id unless session[:user_id]
       redirect_to @user, status: :see_other, notice: 'Account successfully created!'
     else
       render :new, status: :unprocessable_entity
@@ -36,7 +37,7 @@ class UsersController < ApplicationController
   def destroy
     if @user.destroy
       # log out user
-      session[:user_id] = nil
+      session[:user_id] = nil if current_user?(@user)
       redirect_to users_url, status: :see_other, notice: 'Account successfully deleted!'
     else
       render :show, notice: 'Something went wrong! Please, try again.'
@@ -47,6 +48,10 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
+
+    if current_user.is_admin?
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :is_admin)
+    end
   end
 
   def find_user
@@ -55,6 +60,6 @@ class UsersController < ApplicationController
 
   def require_correct_user
     @user = User.find_by(id: params[:id])
-    redirect_to root_url, notice: 'You are not authorized to do that!' unless current_user?(@user)
+    redirect_to root_url, notice: 'You are not authorized to do that!' unless current_user?(@user) || current_user.is_admin?
   end
 end

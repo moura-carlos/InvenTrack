@@ -6,6 +6,7 @@
   <%= f.input :main_image, as: :file %>
 
   <%= f.label :category_ids, "Categories" %>
+  <%= link_to "(New Category)", new_category_path, target: "_blank" %>
   <%= f.collection_check_boxes :category_ids, Category.all, :id, :name do |cb| %>
     <div class="form-check">
       <%= cb.check_box(class: 'form-check-input') %>

@@ -13,7 +13,8 @@
             </li>-->
             <li class="nav-item">
               <% if current_user.is_admin? %>
-                <%= link_to current_user.name + " [ADMIN]", current_user, class: "nav-link fw-bold text-danger" %>
+                <%#= link_to current_user.name + " [ADMIN]", current_user, class: "nav-link fw-bold text-danger" %>
+                <%= render "layouts/admin_dropdown_menu" %>
               <% else %>
                 <%= link_to current_user.name, current_user, class: "nav-link" %>
               <% end %>
@@ -32,7 +33,7 @@
                 Items
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><%= link_to "All Items", items_path, class: "dropdown-item" %></li>
+                <li><%= link_to "My Items", items_path, class: "dropdown-item" %></li>
                 <li><%= link_to "New Item", new_item_path, class: "dropdown-item" %></li>
               </ul>
             </li>
