@@ -8,4 +8,12 @@ module ApplicationHelper
     else 'alert-secondary'
     end
   end
+
+  def inventrack_logo
+    if current_user
+      link_to "InvenTrack", items_path, class: "navbar-brand"
+    else
+      link_to "InvenTrack", root_path, class: "navbar-brand"
+    end
+  end
 end
