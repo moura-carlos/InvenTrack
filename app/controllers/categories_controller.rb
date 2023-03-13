@@ -6,6 +6,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
+    @items = @category.user_items(current_user)
   end
 
   def new
