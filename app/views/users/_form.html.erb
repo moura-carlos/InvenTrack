@@ -5,7 +5,7 @@
   <%= f.input :email, required: true %>
   <%= f.input :password, required: true %>
   <%= f.input :password_confirmation, label: "Confirm Password", required: true %>
-  <%= f.input :is_admin, required: true if current_user.is_admin?%>
+  <%= f.input :is_admin, required: true if current_user && current_user.is_admin?%>
   <% if @user.new_record? %>
     <%= f.submit "Create Account", class: 'btn btn-primary' %>
   <% else %>

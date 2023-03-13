@@ -6,11 +6,13 @@
       <small><%= user.email %></small>
     </div>
     <div>
-      <%= link_to "Edit", edit_user_path(user), class: "btn btn-primary me-2" %>
-      <%= link_to 'Delete',  user_path(user),
-                data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' },
-                class: 'btn btn-danger' %>
-    </div>
+      <% if current_user.is_admin? || current_user == user %>
+        <%= link_to "Edit", edit_user_path(user), class: "btn btn-primary me-2" %>
+        <%= link_to 'Delete',  user_path(user),
+                  data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' },
+                  class: 'btn btn-danger' %>
+      </div>
+      <% end %>
   </li>
   <% end %>
 </ul>
