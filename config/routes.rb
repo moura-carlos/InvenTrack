@@ -10,7 +10,10 @@ Rails.application.routes.draw do
   resources :categories
 
   get "signup", to: "users#new"
+
+  # get "home", to: "pages#home"
+  root "pages#home"
   # get "users/signup", to: "users#new"
   resource :session, only: [:new, :create, :destroy]
-  root "items#index"
+  # root "items#index"
 end
