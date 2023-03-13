@@ -8,8 +8,15 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <% if current_user %>
-            <li class="nav-item">
+            <!--<li class="nav-item">
               <%= link_to current_user.name, current_user, class: "nav-link" %>
+            </li>-->
+            <li class="nav-item">
+              <% if current_user.is_admin? %>
+                <%= link_to current_user.name + " [ADMIN]", current_user, class: "nav-link fw-bold text-danger" %>
+              <% else %>
+                <%= link_to current_user.name, current_user, class: "nav-link" %>
+              <% end %>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
