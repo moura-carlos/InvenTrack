@@ -5,8 +5,19 @@ class ItemsController < ApplicationController
   after_action :send_email, only: [:create, :update]
 
   def index
+    # @user = current_user
+    # @items = @user.items
     @user = current_user
-    @items = @user.items
+    @q = params[:q]
+    if @q.present? && @q[:name_cont].present?
+      search_query = @q[:name_cont]
+      @items = @user.items.where("title LIKE ?", "%#{search_query}%")
+      if @items.empty?
+        flash.now[:alert] = "No items found for '#{search_query}'"
+      end
+    else
+      @items = @user.items
+    end
   end
 
   def new
@@ -58,4 +69,5 @@ class ItemsController < ApplicationController
   def send_email
     ItemMailer.stock(@item, current_user).deliver_now
   end
+
 end
