@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :find_category, only: [:show, :edit, :update, :destroy]
+  before_action :is_admin, only: [:edit, :update, :destroy]
 
   def index
     @categories = Category.all
@@ -52,5 +53,9 @@ class CategoriesController < ApplicationController
 
   def category_params
     params.require(:category).permit(:name)
+  end
+
+  def is_admin
+    redirect_to categories_path, notice: "You are not authorized to do that!" unless current_user.is_admin?
   end
 end
