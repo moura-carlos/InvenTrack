@@ -1,7 +1,7 @@
 <div class="row mx-auto">
   <h4><%= @category.name %></h4>
-  <% if @category.items.any? %>
-    <% @category.items.each do |item| %>
+  <% if @items.any? %>
+    <% @items.each do |item| %>
       <div class="col-md-4 mb-4">
         <%= link_to item, style: "color:inherit;text-decoration:none;" do %>
           <div class="card">
@@ -30,7 +30,7 @@
   <% else %>
     <div class="col-md-12">
       <div class="alert alert-info" role="alert">
-        There are no items in this category.
+        You have no items in this category. <%= link_to "Add a new item", new_item_path %>
       </div>
     </div>
   <% end %>

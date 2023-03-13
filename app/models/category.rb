@@ -6,6 +6,10 @@ class Category < ApplicationRecord
   has_many :item_categories, dependent: :destroy
   has_many :items, through: :item_categories
 
+  def user_items(current_user)
+    items.where(user: current_user)
+  end
+
   private
 
   def downcase_name_attribute
