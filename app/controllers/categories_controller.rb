@@ -7,7 +7,11 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @items = @category.user_items(current_user)
+    if current_user.is_admin?
+      @items = @category.items
+    else
+      @items = @category.user_items(current_user)
+    end
   end
 
   def new

@@ -11,12 +11,15 @@ class ItemsController < ApplicationController
     @q = params[:q]
     if @q.present? && @q[:name_cont].present?
       search_query = @q[:name_cont]
-      @items = @user.items.where("title LIKE ?", "%#{search_query}%")
-      if @items.empty?
+      @searched_items = @user.is_admin? ? Item.where("title LIKE ?", "%#{@q[:name_cont]}%") : @user.items.where("title LIKE ?", "%#{search_query}%")
+      if @searched_items.empty?
         flash.now[:alert] = "No items found for '#{search_query}'"
       end
     else
       @items = @user.items
+      if @user.is_admin?
+        @all_items = Item.all
+      end
     end
   end
 
@@ -63,11 +66,14 @@ class ItemsController < ApplicationController
 
   def find_item
     @user = current_user
-    @item = @user.items.find(params[:id])
+    if @user.is_admin?
+      @item = Item.find(params[:id])
+    else
+      @item = @user.items.find(params[:id])
+    end
   end
 
   def send_email
     ItemMailer.stock(@item, current_user).deliver_now
   end
-
 end
