@@ -11,7 +11,7 @@ class ItemCategoryTest < ActiveSupport::TestCase
     unless @item.save
       puts "Item errors: #{@item.errors.full_messages}"
     end
-    @category = Category.new(name: "Category 1")
+    @category = Category.new(name: "Category 2")
     unless @category.save
       puts "Category errors: #{@category.errors.full_messages}"
     end
