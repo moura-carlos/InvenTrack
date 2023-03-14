@@ -9,3 +9,9 @@
 #   name: MyString
 #   email: MyString
 #   password_digest: <%= BCrypt::Password.create("secret") %>
+
+# test/fixtures/users.yml
+one:
+  name: User
+  email: user@example.com
+  password_digest: <%= BCrypt::Password.create("password") %>

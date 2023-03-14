@@ -5,7 +5,8 @@ class ItemTest < ActiveSupport::TestCase
   #   assert true
   # end
   def setup
-    @user = User.create(name: "User", email: "user@example.com", password: "password", password_confirmation: "password")
+    #@user = User.create(name: "User", email: "user@example.com", password: "password", password_confirmation: "password")
+    @user = users(:one)
   end
 
   test "should not save item without title" do

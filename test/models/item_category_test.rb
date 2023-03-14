@@ -5,7 +5,8 @@ class ItemCategoryTest < ActiveSupport::TestCase
   #   assert true
   # end
   def setup
-    @user = User.create(name: "User", email: "user@example.com", password: "password", password_confirmation: "password")
+    #@user = User.create(name: "User", email: "user@example.com", password: "password", password_confirmation: "password")
+    @user = users(:one)
     @item = Item.new(title: "Item 1", description: "This is a valid description.", quantity: 5, price: 10.0, user_id: @user.id)
     unless @item.save
       puts "Item errors: #{@item.errors.full_messages}"

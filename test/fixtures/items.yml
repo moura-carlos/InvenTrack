@@ -7,3 +7,9 @@
 # two:
 #   title: MyString
 #   description: MyText
+one:
+  title: Item 1
+  description: This is a valid description.
+  quantity: 5
+  price: 10.0
+  user: one
