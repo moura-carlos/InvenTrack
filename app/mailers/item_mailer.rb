@@ -9,7 +9,7 @@ class ItemMailer < ApplicationMailer
     # make sure I can access the item in the view
     @item = item
     @user = current_user
-    if item.quantity.zero?
+    if item.quantity.nil? || item.quantity.zero?
       mail to: current_user.email, subject: "#{@item.title} is out of stock!"
     end
   end
