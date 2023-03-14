@@ -15,3 +15,9 @@ one:
   name: User
   email: user@example.com
   password_digest: <%= BCrypt::Password.create("password") %>
+
+admin:
+  name: Admin User
+  email: admin@example.com
+  password_digest: <%= BCrypt::Password.create("password") %>
+  is_admin: true
