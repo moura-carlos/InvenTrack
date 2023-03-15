@@ -10,7 +10,7 @@
   <% else %>
     <h4>My items!</h4>
     <%= render "items/items", items: @items %>
-    <% if current_user.is_admin? %>
+    <% if current_user && current_user.is_admin? %>
       <h4>All items!</h4>
       <%= render "items/items", items: @all_items %>
     <% end %>

@@ -12,7 +12,7 @@
               <%= link_to current_user.name, current_user, class: "nav-link" %>
             </li>-->
             <li class="nav-item">
-              <% if current_user.is_admin? %>
+              <% if current_user && current_user.is_admin? %>
                 <%#= link_to current_user.name + " [ADMIN]", current_user, class: "nav-link fw-bold text-danger" %>
                 <%= render "layouts/admin_dropdown_menu" %>
               <% else %>
