@@ -32,7 +32,7 @@ The project is created with/makes use of:
 ## Setup
 To run this project - locally - on your machine:
 ```
-$ cd your-folder/anotherpin
+$ cd your-folder/inventrack
 $ bundle install
 $ yarn install
 $ rails db:create
