@@ -8,7 +8,7 @@ README with instructions for setting up and running the app locally.
 * [Technologies](#technologies)
 * [Setup](#setup)
 * [Features](#features)
-* [Admin dashboard](#admin-dashboard)
+* [Admin](#admin)
 * [Modeling](#modeling)
 * [Status](#status)
 * [Testing the deployed application](#testing-the-deployed-application)
@@ -32,7 +32,7 @@ The project is created with/makes use of:
 ## Setup
 To run this project - locally - on your machine:
 ```
-$ cd your-folder/anotherpin
+$ cd your-folder/inventrack
 $ bundle install
 $ yarn install
 $ rails db:create
@@ -144,9 +144,8 @@ When running in production, example on Scalingo, the app needs to read the AWS S
 	* Create/Read/Update/Delete items authored by myself.
 	* Create categories.
 ---
-## Admin dashboard
-* To access the admin dashboard you have to type ```/admin``` after the website full domain, for example, **https://example.com/admin**.
-* The current crendetials to access the admin dashboard are:
+## Admin
+* The current crendetials to access the website as admin are:
 	```
 	login: admin@example.com"
 	password: password
